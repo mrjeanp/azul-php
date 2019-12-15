@@ -10,7 +10,7 @@ mediante el consumo de su interfaz HTTP.
 1. Instalar [composer](https://getcomposer.org).
 2. En tu proyecto, ejecutar: `$ composer install`
 
-## Como Usarla
+## Como usarla
 
 ```php
 <?php
