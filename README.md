@@ -51,9 +51,9 @@ catch (AzulException $e) {
 ### Sale
 ```php
  $sale = $azul->sale([
-    'CardNumber' => ...,
-    'Expiration' => ...,
-    'CVC' => ...,
+    'CardNumber' => $cc_number,
+    'Expiration' => $cc_exp,
+    'CVC' => $cc_cvc,
     'Amount' => 2000.00,
     'Itbis' => 1000.00,
     'CustomOrderId' => 'SALE-1',
@@ -63,9 +63,9 @@ catch (AzulException $e) {
 ### Hold
 ```php
  $hold = $azul->hold([
-    'CardNumber' => ...,
-    'Expiration' => ...,
-    'CVC' => ...,
+    'CardNumber' => $cc_number,
+    'Expiration' => $cc_exp,
+    'CVC' => $cc_cvc,
     'Amount' => 2000.00,
     'Itbis' => 1000.00,
     'CustomOrderId' => 'HOLD-1',
@@ -82,8 +82,8 @@ catch (AzulException $e) {
 ### Post
 ```php
  $post = $azul->post([
-    'AzulOrderId' => ...,
-    'OriginalDate' => ...,
+    'AzulOrderId' => $hold->AzulOrderId,
+    'OriginalDate' => $hold->DateTime,
     'Amount' => 2000.00,
     'Itbis' => 1000.00,
   ]);
@@ -99,28 +99,26 @@ catch (AzulException $e) {
 ### Refund
 ```php
  $refund = $azul->refund([
-    'AzulOrderId' => ...,
-    'OriginalDate' => ...,
+    'AzulOrderId' => $sale->AzulOrderId
+    'OriginalDate' => $sale->DateTime,
     'Amount' => 2000.00,
     'Itbis' => 1000.00,
   ]);
 ```
 
-
-
 ### Create Token
 ```php
  $created = $azul->createToken([
-    'CardNumber' => ...,
-    'Expiration' => ...,
-    'CVC' => ...,
+    'CardNumber' => $cc_number,
+    'Expiration' => $cc_exp,
+    'CVC' => $cc_cvc,
   ]);
 ```
 
 ### Delete Token
 ```php
- $hold = $azul->deleteToken([
-    'DataVaultToken' => '...'
+ $deleted = $azul->deleteToken([
+    'DataVaultToken' => $created->DataVaultToken
   ]);
 ```
 
