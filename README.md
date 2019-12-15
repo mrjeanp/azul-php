@@ -1,7 +1,7 @@
 azul-php
 --------------------
 
-Es una librería en PHP para facilitar el uso de *AZUL Web Services* en PHP. AZUL es una compañia dominicana 
+Es una librería en PHP para facilitar el uso de *AZUL Web Services*. AZUL es una compañia dominicana 
 que procesa de pagos en línea, Web Services es un servicio que provee esta empresa para procesar pagos
 mediante el consumo de su interfaz HTTP.
 
