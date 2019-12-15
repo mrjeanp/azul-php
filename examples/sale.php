@@ -16,7 +16,7 @@ try {
     'CVC' => getenv('VALID_CVC'),
     'Amount' => 2000.00,
     'Itbis' => 1000.00,
-    'CustomOrderNumber' => 'HOLD-1',
+    'CustomOrderNumber' => 'SALE-1',
   ]);
 
   var_dump($sale);
