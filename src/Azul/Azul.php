@@ -31,9 +31,9 @@ class Azul {
 
   public function __construct(array $config = [], array $defaults = []) 
   {
-    $this->config( $config );
-    $this->add( $this->defaults );
+    $this->defaultValues();
     $this->add( $defaults );
+    $this->config( $config );
   }
 
   public function __get($name) {
@@ -42,6 +42,10 @@ class Azul {
 
   public function __set($name, $value) : void {
     $this->values[$name] = $this->format($name, $value);
+  }
+
+  public function defaultValues() {
+    $this->values = $this->defaults;
   }
 
   public function sale(array $data = []) : stdClass {
@@ -190,12 +194,12 @@ class Azul {
     $sslkey && curl_setopt($ch, CURLOPT_SSLKEY, $sslkey);
 
     $result = curl_exec($ch);
+    $response = json_decode($result);
+    $details['response'] = $response;
 
     $this->throwIfCurlError($ch, $details);
 
     curl_close ($ch);
-
-    $response = json_decode($result);
 
     $this->throwIfAzulError($response, $details);
 
@@ -276,6 +280,7 @@ class Azul {
     $errno = curl_errno($ch);
     if ($errno) {
       $message = "cURL ({$errno}): " . curl_strerror($errno) . ", " . curl_error($ch);
+      $message .= $this->get('testing') ? json_encode($details) : "";
       curl_close($ch);
       throw new AzulException($message, $details);
     }
@@ -284,7 +289,7 @@ class Azul {
   protected function throwIfAzulError(stdClass $response, $details) : void {
     if ($response->IsoCode  !== '00') 
       throw new AzulException(
-        "Hubo un error procesando su método de pago, intente con otra tarjeta o contacte su banco", 
+        "Hubo un error procesando su método de pago, intente con otra tarjeta o contacte su banco\n" . ($this->get('testing') ? json_encode($details): ""), 
         $details
       );
   }

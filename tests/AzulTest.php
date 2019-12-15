@@ -13,7 +13,13 @@ class AzulTest extends TestCase {
 
   protected function setUp()
   {
-    $this->azul = new Azul;
+    $this->azul = new Azul([
+      'testing' => true,
+      'certificate_path' => getenv('CRT_PATH'),
+      'key_path' => getenv('KEY_PATH'),
+    ], [
+      'Store' => getenv('MID')
+    ]);
   }
 
   function testFormat() {
@@ -89,26 +95,10 @@ class AzulTest extends TestCase {
   }
 
 
-  function testInstance() {
-    $azul = new Azul([
-      'certificate_path' => getenv('CRT_PATH'),
-      'key_path' => getenv('KEY_PATH'),
-    ], [
-      'Store' => getenv('MID')
-    ]);
-
-    $this->assertSame(getenv('MID'), $azul->Store);
-    $this->assertSame(getenv('CRT_PATH'), $azul->get('certificate_path'));
-    $this->assertSame(getenv('KEY_PATH'), $azul->get('key_path'));
-
-    return $azul;
-  }
-
   /**
-   * @depends testInstance
    */
-  function testSale(Azul $azul) {
-    $sale = $azul->sale([
+  function testSale() {
+    $sale = $this->azul->sale([
       'Amount' => 100000,
       'Itbis' => 50000,
       'CardNumber' => getenv('VALID_CARD'),
@@ -124,11 +114,10 @@ class AzulTest extends TestCase {
   }
 
   /**
-   * @depends testInstance
    * @depends testSale
    */
-  function testRefund( Azul $azul, stdClass $sale ) {
-    $refund = $azul->refund([
+  function testRefund(  stdClass $sale ) {
+    $refund = $this->azul->refund([
       'Amount' => 100000,
       'Itbis' => 50000,
       'AzulOrderId' => $sale->AzulOrderId,
@@ -141,10 +130,9 @@ class AzulTest extends TestCase {
   }
 
   /**
-   * @depends testInstance
    */
-  function testHold( Azul $azul) {
-    $response = $azul->hold([
+  function testHold() {
+    $response = $this->azul->hold([
       'Amount' => 100000,
       'Itbis' => 50000,
       'CustomOrderId' => 'HOLD-1',
@@ -162,13 +150,12 @@ class AzulTest extends TestCase {
 
   /**
    * @depends testHold
-   * @depends testInstance
    */
-  function testPost($response, Azul $azul) {
-    $response = $azul->hold([
+  function testPost($hold) {
+    $response = $this->azul->hold([
       'Amount' => 100000,
       'Itbis' => 50000,
-      'AzulOrderId' => $response->AzulOrderId,
+      'AzulOrderId' => $hold->AzulOrderId,
     ]);
 
     $this->assertAttributeSame('00', 'IsoCode', $response);
@@ -178,13 +165,11 @@ class AzulTest extends TestCase {
     return $response;
   }
 
-
   /**
    * @depends testSale
-   * @depends testInstance
    */
-  function testVerify($sale, Azul $azul) {
-    $verify = $azul->verify([
+  function testVerify($sale) {
+    $verify = $this->azul->verify([
       'CustomOrderId' => $sale->CustomOrderId,
     ]);
 
@@ -193,10 +178,9 @@ class AzulTest extends TestCase {
   }
 
   /**
-   * @depends testInstance
    */
-  function testCreateToken(Azul $azul) {
-    $created = $azul->createToken([
+  function testCreateToken() {
+    $created = $this->azul->createToken([
       'CardNumber' => getenv('VALID_CARD'),
       'Expiration' => getenv('VALID_EXPIRATION'),
       'CVC' => getenv('VALID_CVC')
@@ -208,13 +192,11 @@ class AzulTest extends TestCase {
     return $created;
   }
 
-
   /**
    * @depends testCreateToken
-   * @depends testInstance
    */
-  function testCancel($created, Azul $azul) {
-    $hold = $azul->hold([
+  function testCancel($created) {
+    $hold = $this->azul->hold([
       'DataVaultToken' => $created->DataVaultToken,
       'Amount' => 1000.00,
       'Itbis' => 500.00,
@@ -222,7 +204,7 @@ class AzulTest extends TestCase {
     $this->assertAttributeSame('00', 'IsoCode', $hold);
     $this->assertObjectHasAttribute('AzulOrderId', $hold);
 
-    $cancel = $azul->cancel([
+    $cancel = $this->azul->cancel([
       'AzulOrderId' => $hold->AzulOrderId
     ]);
 
@@ -231,15 +213,13 @@ class AzulTest extends TestCase {
 
   /**
    * @depends testCreateToken
-   * @depends testInstance
    */
-  function testDeleteToken($created, Azul $azul) {
-    $deleted = $azul->deleteToken([
+  function testDeleteToken($created) {
+    $deleted = $this->azul->deleteToken([
       'DataVaultToken' => $created->DataVaultToken
     ]);
 
     $this->assertAttributeSame('00', 'IsoCode', $deleted);
   }
-
 
 }
