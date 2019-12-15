@@ -58,6 +58,13 @@ catch (AzulException $e) {
     'Itbis' => 1000.00,
     'CustomOrderId' => 'SALE-1',
   ]);
+  
+  $sale = $azul->sale([
+    'DataVaultToken' => $data_vault_token,
+    'Amount' => 2000.00,
+    'Itbis' => 1000.00,
+    'CustomOrderId' => 'SALE-2',
+  ]);
 ```
 
 ### Hold
@@ -69,6 +76,13 @@ catch (AzulException $e) {
     'Amount' => 2000.00,
     'Itbis' => 1000.00,
     'CustomOrderId' => 'HOLD-1',
+  ]);
+  
+  $hold = $azul->hold([
+    'DataVaultToken' => $data_vault_token,
+    'Amount' => 2000.00,
+    'Itbis' => 1000.00,
+    'CustomOrderId' => 'HOLD-2',
   ]);
 ```
 
