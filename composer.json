@@ -1,0 +1,26 @@
+{
+  "name": "mrjeanp/azul",
+  "description": "AZUL Web Services PHP library",
+  "type": "library",
+  "minimum-stability": "dev",
+  "authors": [
+    {
+      "name": "Jean Perez",
+      "email": "mrjeanperez@gmail.com"
+    }
+  ],
+
+  "require": {
+    "php": ">=7.1.29"
+  },
+
+  "autoload": {
+    "psr-0": {
+      "Azul\\": "src/"
+    }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "7.5.x-dev",
+    "vlucas/phpdotenv": "^4.1@dev"
+  }
+}
