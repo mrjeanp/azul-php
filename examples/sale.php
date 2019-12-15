@@ -10,7 +10,7 @@ $denv->load();
 try {
   $azul = new Azul;
   $azul->Store = getenv('MID');
-  $hold = $azul->sale([
+  $sale = $azul->sale([
     'CardNumber' => getenv('VALID_CARD'),
     'Expiration' => getenv('VALID_EXPIRATION'),
     'CVC' => getenv('VALID_CVC'),
@@ -19,7 +19,7 @@ try {
     'CustomOrderNumber' => 'HOLD-1',
   ]);
 
-  var_dump($hold);
+  var_dump($sale);
 }
 catch (\Exception $e) {
   var_dump($e);
