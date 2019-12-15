@@ -7,8 +7,9 @@ mediante el consumo de su interfaz HTTP.
 
 
 ## Instalación
-1. Instalar [composer](https://getcomposer.org).
-2. En tu proyecto, ejecutar: `$ composer install`
+1. Instala [composer](https://getcomposer.org).
+2. Ejecuta `$ composer require mrjeanp/azul`
+2. Ejecuta: `$ composer install`
 
 ## Como usarla
 
