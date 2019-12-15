@@ -50,7 +50,7 @@ catch (AzulException $e) {
 
 ## Pruebas
 Para correr pruebas, crea un archivo llamado `test.env` y copia el contenido de
-`test.env.example` en ese archivo, y asigna los valores correspondientes 
+`test.env.example` en ese archivo, luego los valores correspondientes 
 a tu entorno. 
 
 Ejectuta:
