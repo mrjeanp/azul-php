@@ -1,6 +1,7 @@
 {
   "name": "mrjeanp/azul",
   "description": "AZUL Web Services PHP library",
+  "license": "MIT",
   "type": "library",
   "minimum-stability": "dev",
   "authors": [
