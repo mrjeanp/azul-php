@@ -36,7 +36,7 @@ try {
     'CVC' => /* Codigo CVC */,
     'Amount' => 2000.00,
     'Itbis' => 1000.00,
-    'CustomOrderNumber' => 'SALE-1',
+    'CustomOrderId' => 'SALE-1',
   ]);
   
   // Resultado de la transacción
@@ -47,6 +47,83 @@ catch (AzulException $e) {
   var_dump($e->getDetails());
 }
 ```
+
+### Sale
+```php
+ $sale = $azul->sale([
+    'CardNumber' => ...,
+    'Expiration' => ...,
+    'CVC' => ...,
+    'Amount' => 2000.00,
+    'Itbis' => 1000.00,
+    'CustomOrderId' => 'SALE-1',
+  ]);
+```
+
+### Hold
+```php
+ $hold = $azul->hold([
+    'CardNumber' => ...,
+    'Expiration' => ...,
+    'CVC' => ...,
+    'Amount' => 2000.00,
+    'Itbis' => 1000.00,
+    'CustomOrderId' => 'HOLD-1',
+  ]);
+```
+
+### Cancel
+```php
+ $cancel = $azul->cancel([
+   'CustomOrderId' => $hold->CustomOrderId
+ ]);
+```
+
+### Post
+```php
+ $post = $azul->post([
+    'AzulOrderId' => ...,
+    'OriginalDate' => ...,
+    'Amount' => 2000.00,
+    'Itbis' => 1000.00,
+  ]);
+```
+
+### Verify
+```php
+ $verify = $azul->verify([
+    'CustomOrderId' => $sale->CustomOrderId
+  ]);
+```
+
+### Refund
+```php
+ $refund = $azul->refund([
+    'AzulOrderId' => ...,
+    'OriginalDate' => ...,
+    'Amount' => 2000.00,
+    'Itbis' => 1000.00,
+  ]);
+```
+
+
+
+### Create Token
+```php
+ $created = $azul->createToken([
+    'CardNumber' => ...,
+    'Expiration' => ...,
+    'CVC' => ...,
+  ]);
+```
+
+### Delete Token
+```php
+ $hold = $azul->deleteToken([
+    'DataVaultToken' => '...'
+  ]);
+```
+
 
 ## Pruebas
 Para correr pruebas, crea un archivo llamado `test.env` y copia el contenido de
