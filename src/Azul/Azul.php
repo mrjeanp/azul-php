@@ -138,18 +138,18 @@ class Azul {
   }
 
   public function deleteToken(array $data = []) : stdClass {
+    self::requires($data, ['DataVaultToken']);
     $this->TrxType = 'DELETE';
+    $this->CardNumber = '';
+    $this->Expiration = '';
+    $this->CVC = '';
+
     $this->add($data);
 
     return $this->send(
       $this->values([
-        'Channel', 
-        'Store', 
-        'TrxType', 
-        'CardNumber', 
-        'Expiration', 
-        'CVC', 
-        'DataVaultToken',
+        'Channel', 'Store', 'TrxType', 'CardNumber', 
+        'Expiration', 'CVC', 'DataVaultToken',
       ]),
       'ProcessDataVault'
     );
