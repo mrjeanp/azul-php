@@ -21,11 +21,11 @@ use Azul\AzulException;
 
 try {
   $azul = new Azul;
-  $azul->set('auth1', 'username'); // Auth1 otorgado por AZUL.
-  $azul->set('auth2', 'password'); // Auth2 otorgado por AZUL.
+  $azul->set('auth1', 'test'); // Auth1 otorgado por AZUL.
+  $azul->set('auth2', 'test'); // Auth2 otorgado por AZUL.
   $azul->set('domain', 'pruebas'); // Entorno (pruebas|pagos)
-  $azul->set('certificate_path', /* Ruta absoluta del certificado otorgado por AZUL */);
-  $azul->set('key_path', /* Ruta absoluta de la llave del certificado */);
+  $azul->set('certificate_path', '/absolute/path/to/azul.crt');
+  $azul->set('key_path', '/absolute/path/to/azul.key');
   
   $azul->Store = /* Merchant ID (MID) otorgado por AZUL */;
   
