@@ -3,6 +3,7 @@ require_once __DIR__."/../vendor/autoload.php";
 
 use Dotenv\Dotenv;
 use Azul\Azul;
+use Azul\AzulException;
 
 $denv = Dotenv::createImmutable(__DIR__.'/../', 'test.env');
 $denv->load();
@@ -21,7 +22,7 @@ try {
 
   var_dump($sale);
 }
-catch (\Exception $e) {
-  var_dump($e);
+catch (AzulException $e) {
+  var_dump($e->getDetails());
 }
 
