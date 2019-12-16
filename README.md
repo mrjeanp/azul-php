@@ -1,11 +1,9 @@
 azul-php
 --------------------
 
-Es una librería en PHP para facilitar el desarrollo con *AZUL Web Services*. AZUL es una compañia dominicana 
-que procesa de pagos en línea, Web Services es un servicio que provee esta empresa para procesar pagos
-mediante el consumo de su interfaz HTTP.
+Visita la [Wiki](https://github.com/mrjeanp/azul-php/wiki/Azul-Webservices-Docs) para saber más sobre AZUL Webservices.
 
-Cualquiera que haya trabajado con la API de AZUL conoce las inconsistencias que existen al momento de desarrollar soluciones de pago con este servicio, esta librería existe para ayudar con ese propósito.
+Cualquiera que haya trabajado con la API de AZUL conoce bien las inconsistencias que existen en este servicio, las cuales generan grandes frustraciones al momento de desarrollar, esta librería existe para ayudar con ese propósito.
 
 ## Instalación
 1. Instala [composer](https://getcomposer.org).
