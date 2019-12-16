@@ -3,7 +3,7 @@ azul-php
 
 Visita la [Wiki](https://github.com/mrjeanp/azul-php/wiki/Azul-Webservices-Docs) para saber más sobre AZUL Webservices.
 
-Cualquiera que haya trabajado con la API de AZUL conoce bien las inconsistencias que existen en este servicio, las cuales generan grandes frustraciones al momento de desarrollar, esta librería existe para ayudar con ese propósito.
+Cualquiera que haya trabajado con la API de AZUL conoce bien las inconsistencias que existen en este servicio, las cuales generan grandes frustraciones al momento de desarrollar. Esta librería existe para ayudar con ese propósito.
 
 ## Instalación
 1. Instala [composer](https://getcomposer.org).
