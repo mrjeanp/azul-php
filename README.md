@@ -11,7 +11,7 @@ mediante el consumo de su interfaz HTTP.
 2. Ejecuta `$ composer require mrjeanp/azul-php`
 2. Ejecuta: `$ composer install`
 
-## Como usarla
+## Cómo usarla
 
 ```php
 <?php
@@ -32,9 +32,9 @@ try {
   
   // Ejecutar transacción
   $sale = $azul->sale([
-    'CardNumber' => /* Numero de tarjeta */,
-    'Expiration' => /* Fecha de Expiracion */,
-    'CVC' => /* Codigo CVC */,
+    'CardNumber' => ...,
+    'Expiration' => ...,
+    'CVC' => ...,
     'Amount' => 2000.00,
     'Itbis' => 1000.00,
     'CustomOrderId' => 'SALE-1',
@@ -50,6 +50,8 @@ catch (AzulException $e) {
 ```
 
 ### Sale
+Crea una transacción de venta usando la información de una tarjeta o un token del DataVault.
+
 ```php
  $sale = $azul->sale([
     'CardNumber' => $cc_number,
@@ -69,6 +71,8 @@ catch (AzulException $e) {
 ```
 
 ### Hold
+Crea una transacción en HOLD (en espera) usando la info. de una tarjeta o token del DataVault.
+
 ```php
  $hold = $azul->hold([
     'CardNumber' => $cc_number,
@@ -88,6 +92,8 @@ catch (AzulException $e) {
 ```
 
 ### Cancel
+Cancela una transacción en HOLD.
+
 ```php
  $cancel = $azul->cancel([
    'CustomOrderId' => $hold->CustomOrderId
@@ -95,6 +101,8 @@ catch (AzulException $e) {
 ```
 
 ### Post
+Confirma una transacción en HOLD.
+
 ```php
  $post = $azul->post([
     'AzulOrderId' => $hold->AzulOrderId,
@@ -105,6 +113,8 @@ catch (AzulException $e) {
 ```
 
 ### Verify
+Verifica una transacción previa (HOLD o SALE)
+
 ```php
  $verify = $azul->verify([
     'CustomOrderId' => $sale->CustomOrderId
@@ -112,6 +122,8 @@ catch (AzulException $e) {
 ```
 
 ### Refund
+Crea una transacción de reembolso.
+
 ```php
  $refund = $azul->refund([
     'AzulOrderId' => $sale->AzulOrderId
@@ -122,6 +134,8 @@ catch (AzulException $e) {
 ```
 
 ### Create Token
+Crea un token del DataVault.
+
 ```php
  $created = $azul->createToken([
     'CardNumber' => $cc_number,
@@ -131,6 +145,8 @@ catch (AzulException $e) {
 ```
 
 ### Delete Token
+Elimina un token del DataVault.
+
 ```php
  $deleted = $azul->deleteToken([
     'DataVaultToken' => $created->DataVaultToken
