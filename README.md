@@ -7,8 +7,8 @@ Cualquiera que haya trabajado con la API de AZUL conoce bien las inconsistencias
 
 ## Instalación
 1. Instala [composer](https://getcomposer.org).
-2. Ejecuta `$ composer require mrjeanp/azul-php`
-2. Ejecuta: `$ composer install`
+2. `$ composer require mrjeanp/azul-php`
+2. `$ composer install`
 
 ## Cómo usarla
 
