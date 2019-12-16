@@ -5,6 +5,7 @@ Es una librería en PHP para facilitar el desarrollo con *AZUL Web Services*. AZ
 que procesa de pagos en línea, Web Services es un servicio que provee esta empresa para procesar pagos
 mediante el consumo de su interfaz HTTP.
 
+Cualquiera que haya trabajado con la API de AZUL conoce las inconsistencias que existen al momento de desarrollar soluciones de pago, esta librería existe para ayudar con este propósito.
 
 ## Instalación
 1. Instala [composer](https://getcomposer.org).
