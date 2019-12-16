@@ -104,6 +104,7 @@ class AzulTest extends TestCase {
       'CardNumber' => getenv('VALID_CARD'),
       'Expiration' => getenv('VALID_EXPIRATION'),
       'CVC' => getenv('VALID_CVC'),
+      'CustomOrderId' => 'SALE-1',
     ]);
 
     $this->assertObjectHasAttribute('AzulOrderId', $sale);
@@ -152,17 +153,17 @@ class AzulTest extends TestCase {
    * @depends testHold
    */
   function testPost($hold) {
-    $response = $this->azul->hold([
+    $post = $this->azul->post([
       'Amount' => 100000,
       'Itbis' => 50000,
       'AzulOrderId' => $hold->AzulOrderId,
     ]);
 
-    $this->assertAttributeSame('00', 'IsoCode', $response);
-    $this->assertObjectHasAttribute('DateTime', $response);
-    $this->assertObjectHasAttribute('AzulOrderId', $response);
+    $this->assertAttributeSame('00', 'IsoCode', $post);
+    $this->assertObjectHasAttribute('DateTime', $post);
+    $this->assertObjectHasAttribute('AzulOrderId', $post);
 
-    return $response;
+    return $post;
   }
 
   /**
