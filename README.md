@@ -11,7 +11,7 @@ mediante el consumo de su interfaz HTTP.
 2. Ejecuta `$ composer require mrjeanp/azul-php`
 2. Ejecuta: `$ composer install`
 
-## Como usarla
+## Cómo usarla
 
 ```php
 <?php
