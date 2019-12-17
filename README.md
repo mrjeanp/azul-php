@@ -3,7 +3,7 @@ azul-php
 
 Cualquiera que haya trabajado con la API de AZUL conoce bien las inconsistencias que existen en este servicio, las cuales generan grandes frustraciones al momento de desarrollar. Esta librería te puede ayudar a evitar la mayoría de frustraciones.
 
-La documentación también ha sido mejorada con respecto al PDF original de AZUL, con una mejor organización del texto y una referencia interactiva la API.
+La documentación también ha sido mejorada con respecto al PDF original de AZUL, con una mejor organización del texto y una referencia interactiva de la API.
 
 Consulta esta [wiki](https://github.com/mrjeanp/azul-php/wiki) para saber más sobre AZUL Webservices.
 
